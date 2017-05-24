@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.microbean</groupId>
+    <artifactId>microbean-dynamodbbrokermain</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.microbean</groupId>
+        <artifactId>microbean-pluginmanagement-pom</artifactId>
+        <version>3</version>
+    </parent>
+
+    <name>MicroBean Service Broker for dynamodb</name>
+    <description>${project.name}</description>
+    <inceptionYear>2017</inceptionYear>
+    <url>https://ljnelson.github.io/${project.artifactId}</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/ljnelson/${project.artifactId}/</url>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>1.3</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>3.0.1-b04</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>2.0</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.interceptor</groupId>
+                <artifactId>javax.interceptor-api</artifactId>
+                <version>1.2</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.0.1</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>2.8.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>3.0.1-b08</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>2.25.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jandex</artifactId>
+                <version>2.0.3.Final</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.weld</groupId>
+                <artifactId>weld-core-bom</artifactId>
+                <version>3.0.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-configuration-cdi</artifactId>
+                <version>0.1.5</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-configuration</artifactId>
+                <version>0.1.1</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-jersey-container-grizzly2-http-cdi-extension</artifactId>
+                <version>0.2.3</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-jersey-container-grizzly2-http-cdi</artifactId>
+                <version>0.2.3</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-main</artifactId>
+                <version>6</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-service-broker-api</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-service-broker-dynamo</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.microbean</groupId>
+                <artifactId>microbean-service-broker-jaxrs</artifactId>
+                <version>0.1.0-SNAPSHOT</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.2.2</version>
+                <type>jar</type>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- Compile-scoped dependencies. -->
+
+        <!-- Provided-scoped dependencies. -->
+
+        <!-- Runtime-scoped dependencies. -->
+
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.hk2.external</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.ext.cdi</groupId>
+            <artifactId>jersey-weld2-se</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.hk2.external</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jandex</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.spec.javax.el</groupId>
+                    <artifactId>jboss-el-api_3.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jboss.spec.javax.interceptor</groupId>
+                    <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-configuration</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-configuration-cdi</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-jersey-container-grizzly2-http-cdi-extension</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.hk2.external</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-jersey-container-grizzly2-http-cdi</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-main</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-service-broker-api</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microbean</groupId>
+            <artifactId>microbean-service-broker-jaxrs</artifactId>
+            <type>jar</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Test-scoped dependencies. -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <resources>
+            <resource>
+                <targetPath>${project.build.directory}</targetPath>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>logback.xml</include>
+                    <include>logging.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>fabric8-maven-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>Build classpath property</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>build-classpath</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <localRepoProperty>/home/microbean/.m2/repository</localRepoProperty>
+                            <outputProperty>microbeanClasspath</outputProperty>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>Create Kubernetes resources and Helm chart</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>resource</goal>
+                            <goal>helm</goal>
+                        </goals>
+                        <configuration>
+                            <enricher>
+                                <config>
+                                    <fmp-controller>
+                                        <pullPolicy>${imagePullPolicy}</pullPolicy>
+                                        <replicaCount>${replicaCount}</replicaCount>
+                                    </fmp-controller>
+                                    <fmp-service>
+                                        <port>${port}</port>
+                                        <type>${kubernetesServiceType}</type>
+                                    </fmp-service>
+                                </config>
+                            </enricher>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Build Docker image</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Push Docker image</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Apply Kubernetes resouces</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>apply</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>${imageName}</name>
+                            <build>
+                                <from>${baseImageName}</from>
+                                <labels>
+                                    <maintainer>${maintainer}</maintainer>
+                                    <org.microbean.docker.repository.name>${imageName}</org.microbean.docker.repository.name>
+                                </labels>
+                                <assembly>
+                                    <inline>
+                                        <files>
+                                            <file>
+                                                <source>${project.build.directory}/logback.xml</source>
+                                                <outputDirectory/>
+                                            </file>
+                                            <file>
+                                                <source>${project.build.directory}/logging.properties</source>
+                                                <outputDirectory/>
+                                            </file>
+                                        </files>
+                                        <repositories>
+                                            <repository>
+                                                <includeMetadata>false</includeMetadata>
+                                                <outputDirectory>.m2/repository</outputDirectory>
+                                            </repository>
+                                        </repositories>
+                                    </inline>
+                                    <targetDir>/home/microbean</targetDir>
+                                    <user>microbean:microbean</user>
+                                </assembly>
+                                <env>
+                                    <JAVA_OPTS>-DallowPayloadForUndefinedHttpMethods=${allowPayloadForUndefinedHttpMethods} -Dport=${port} -Djava.util.logging.config.file=logging.properties -Dorg.jboss.weld.se.shutdownHook=false -Dorg.jboss.logging.provider=slf4j -Dlogback.configurationFile=logback.xml ${javaOpts}</JAVA_OPTS>
+                                </env>
+                                <optimise>true</optimise>
+                                <workdir>/home/microbean</workdir>
+                                <user>microbean:microbean</user>
+                                <cmd>exec java ${JAVA_OPTS} -cp "${microbeanClasspath}" org.microbean.main.Main</cmd>
+                                <ports>
+                                    <port>${port}</port>
+                                </ports>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <org.jboss.logging.provider>${org.jboss.logging.provider}</org.jboss.logging.provider>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <key>allowPayloadForUndefinedHttpMethods</key>
+                            <value>${allowPayloadForUndefinedHttpMethods}</value>
+                        </property>
+                        <property>
+                            <key>port</key>
+                            <value>${port}</value>
+                        </property>
+                        <property>
+                            <key>org.jboss.weld.se.shutdownHook</key>
+                            <value>false</value>
+                        </property>
+                        <property>
+                            <key>org.jboss.logging.provider</key>
+                            <value>slf4j</value>
+                        </property>
+                        <property>
+                            <key>logback.configurationFile</key>
+                            <value>${project.build.directory}/logback.xml</value>
+                        </property>
+                    </systemProperties>
+                    <mainClass>org.microbean.main.Main</mainClass>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <properties>
+
+        <!-- Properties used to assemble and configure Docker images -->
+        <allowPayloadForUndefinedHttpMethods>true</allowPayloadForUndefinedHttpMethods>
+        <baseImageName>microbean/base:8</baseImageName>
+        <imageName>sazbad/dynamodbbroker</imageName>
+        <imagePullPolicy>Always</imagePullPolicy>
+        <javaOpts/>
+        <kubernetesServiceType>NodePort</kubernetesServiceType>
+        <maintainer>Laird Nelson &lt;ljnelson@gmail.com&gt;</maintainer>
+        <port>8080</port>
+        <replicaCount>1</replicaCount>
+
+        <!-- fabric8-maven-plugin properties; see https://maven.fabric8.io/#goals-overview-build -->
+        <docker.skip.build>false</docker.skip.build>
+        <docker.skip.push>false</docker.skip.push>
+        <docker.useColor>false</docker.useColor>
+        <docker.verbose>false</docker.verbose>
+        <fabric8.mode>kubernetes</fabric8.mode>
+        <fabric8.namespace>default</fabric8.namespace>
+        <fabric8.profile>minimal</fabric8.profile>
+        <fabric8.recreate>false</fabric8.recreate>
+
+        <!-- maven-compiler-plugin properties; see https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html -->
+        <maven.main.skip>true</maven.main.skip>
+        <maven.test.skip>true</maven.test.skip>
+
+        <!-- maven-deploy-plugin properties; http://maven.apache.org/plugins/maven-deploy-plugin/deploy-mojo.html -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+
+        <!-- maven-install-plugin properties; see http://maven.apache.org/plugins/maven-install-plugin/install-mojo.html -->
+        <maven.install.skip>false</maven.install.skip>
+
+        <!-- maven-javadoc-plugin properties; see https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
+        <links>http://docs.jboss.org/cdi/api/2.0/,http://docs.oracle.com/javaee/7/api/,https://ljnelson.github.io/microbean-configuration-api/apidocs/,https://ljnelson.github.io/microbean-configuration-cdi/apidocs/</links>
+
+        <!-- maven-release-plugin properties; see http://maven.apache.org/maven-release/maven-release-plugin/perform-mojo.html -->
+        <goals>deploy,site-deploy</goals>
+
+        <!-- maven-resources-plugin properties; see https://maven.apache.org/plugins/maven-resources-plugin/resources-mojo.html -->
+        <maven.resources.skip>false</maven.resources.skip>
+
+        <!-- nexus-staging-plugin properties; see https://github.com/sonatype/nexus-maven-plugins/blob/nexus-maven-plugins-1.6.8/staging/maven-plugin/src/main/java/org/sonatype/nexus/maven/staging/deploy/DeployMojo.java#L86-L90 -->
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+
+        <!-- Weld logging; see https://docs.jboss.org/weld/reference/latest/en-US/html/logging.html#_weld_se -->
+        <org.jboss.logging.provider>slf4j</org.jboss.logging.provider>
+
+    </properties>
+
+</project>
